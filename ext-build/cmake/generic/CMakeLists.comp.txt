@@ -1,0 +1,20 @@
+
+include(@LOCAL_COMP_ROOTDIR@/comp.cmake)
+
+COMP_CHECK_VARS()
+    
+include_directories(@LOCAL_COMP_ROOTDIR@/include)
+
+message(STATUS "Found component in ${comp_dir}")
+
+BOZ_COMP_FIND_APIS(${comp_dir})     
+
+message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/src/CMakeLists.txt)")
+if(EXISTS @LOCAL_COMP_ROOTDIR@/src/CMakeLists.txt)
+    add_subdirectory(@LOCAL_COMP_ROOTDIR@/src @LOCAL_COMP_GENDIR@/src)       
+endif()
+
+message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/test/CMakeLists.txt)")
+if(EXISTS @LOCAL_COMP_ROOTDIR@/test/CMakeLists.txt)
+    add_subdirectory(@LOCAL_COMP_ROOTDIR@/test @LOCAL_COMP_GENDIR@/test)       
+endif()
