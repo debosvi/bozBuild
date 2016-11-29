@@ -8,7 +8,8 @@ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/lib)
 #     set(LINK_FLAGS -Xlinker -rpath-link -Xlinker ${DEFAULT_INSTALL_DIR}/lib )
 set (EXECUTABLE_OUTPUT_PATH ${DEFAULT_INSTALL_DIR}/bin)
 
-include_directories (${CMAKE_BINARY_DIR}/public/)
+include_directories (${CMAKE_BINARY_DIR}/include/public/)
+include_directories (${CMAKE_BINARY_DIR}/include)
 
 set(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON) 
 include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comps.cmake)

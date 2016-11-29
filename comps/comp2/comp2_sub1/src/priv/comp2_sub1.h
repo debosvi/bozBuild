@@ -5,6 +5,8 @@
 #include <comp1/comp1.h>
 #include <comp2s1/comp2_sub1.h>
 
+#include <restricted/comp1_private.h>
+
 extern void comp2_sub1_reset(void);
 
 #endif // __PRIVATE_COMP2S1_H__

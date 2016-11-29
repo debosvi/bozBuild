@@ -19,7 +19,7 @@ macro (BOZ_COMP_FIND_APIS dir)
                 file(RELATIVE_PATH cp_file ${dir}/include/public ${api} )
                 configure_file(
                     ${api}
-                    ${CMAKE_BINARY_DIR}/public/${COMP_HEADER_PREFIX}/${cp_file}
+                    ${CMAKE_BINARY_DIR}/include/public/${COMP_HEADER_PREFIX}/${cp_file}
                     @ONLY)
             endforeach()
         else()
@@ -37,7 +37,7 @@ macro (BOZ_COMP_FIND_APIS dir)
                 file(RELATIVE_PATH cp_file ${dir}/include/restricted ${api} )
                 configure_file(
                     ${api}
-                    ${CMAKE_BINARY_DIR}/restricted/${COMP_HEADER_PREFIX}/${cp_file}
+                    ${CMAKE_BINARY_DIR}/include/restricted/${cp_file}
                     @ONLY)
             endforeach()
         else()
