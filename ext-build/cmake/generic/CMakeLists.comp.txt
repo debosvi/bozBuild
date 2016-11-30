@@ -21,7 +21,14 @@ if(EXISTS @LOCAL_COMP_ROOTDIR@/src/src.cmake)
     add_subdirectory(@LOCAL_COMP_SRCDIR@/src @LOCAL_COMP_GENDIR@/src)       
 endif()
 
-message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/test/CMakeLists.txt)")
-if(EXISTS @LOCAL_COMP_ROOTDIR@/test/CMakeLists.txt)
-    add_subdirectory(@LOCAL_COMP_ROOTDIR@/test @LOCAL_COMP_GENDIR@/test)       
+message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/test/src.cmake)")
+if(EXISTS @LOCAL_COMP_ROOTDIR@/test/src.cmake)
+    ## prepare configure_file
+    set(LOCAL_SRC_ROOTDIR @LOCAL_COMP_ROOTDIR@/test)
+
+    configure_file(
+        ${BOZ_EXT_BUILD_DIR}/generic/CMakeLists.src.txt
+        @LOCAL_COMP_SRCDIR@/test/CMakeLists.txt
+        @ONLY)  
+    add_subdirectory(@LOCAL_COMP_SRCDIR@/test @LOCAL_COMP_GENDIR@/test)       
 endif()
