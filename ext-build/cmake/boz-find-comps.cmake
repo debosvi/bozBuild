@@ -1,4 +1,6 @@
 
+include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comp-src.cmake)
+
 macro(COMP_CHECK_VARS)
     if("${COMP_NAME}" STREQUAL "")
             message(SEND_ERROR "Unable to retreive component name (variable COMP_NAME)")
@@ -58,6 +60,7 @@ macro (BOZ_COMPS_FIND_ALL main_dir)
 
             ## prepare configure_file
             set(LOCAL_COMP_ROOTDIR ${comp_dir})
+            set(LOCAL_COMP_SRCDIR ${CMAKE_BINARY_DIR}/comps/src/${comp_dir2})
             set(LOCAL_COMP_GENDIR ${CMAKE_BINARY_DIR}/comps/build/${comp_dir2})
 
             configure_file(

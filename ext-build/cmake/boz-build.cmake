@@ -7,6 +7,7 @@ set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/lib)
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/lib)
 #     set(LINK_FLAGS -Xlinker -rpath-link -Xlinker ${DEFAULT_INSTALL_DIR}/lib )
 set (EXECUTABLE_OUTPUT_PATH ${DEFAULT_INSTALL_DIR}/bin)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/bin)
 
 include_directories (${CMAKE_BINARY_DIR}/include/public/)
 include_directories (${CMAKE_BINARY_DIR}/include)

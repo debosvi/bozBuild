@@ -9,9 +9,16 @@ message(STATUS "Found component in ${comp_dir}")
 
 BOZ_COMP_FIND_APIS(${comp_dir})     
 
-message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/src/CMakeLists.txt)")
-if(EXISTS @LOCAL_COMP_ROOTDIR@/src/CMakeLists.txt)
-    add_subdirectory(@LOCAL_COMP_ROOTDIR@/src @LOCAL_COMP_GENDIR@/src)       
+message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/src/src.cmake)")
+if(EXISTS @LOCAL_COMP_ROOTDIR@/src/src.cmake)
+    ## prepare configure_file
+    set(LOCAL_SRC_ROOTDIR @LOCAL_COMP_ROOTDIR@/src)
+
+    configure_file(
+        ${BOZ_EXT_BUILD_DIR}/generic/CMakeLists.src.txt
+        @LOCAL_COMP_SRCDIR@/src/CMakeLists.txt
+        @ONLY)  
+    add_subdirectory(@LOCAL_COMP_SRCDIR@/src @LOCAL_COMP_GENDIR@/src)       
 endif()
 
 message(STATUS "Check presence of (@LOCAL_COMP_ROOTDIR@/test/CMakeLists.txt)")
