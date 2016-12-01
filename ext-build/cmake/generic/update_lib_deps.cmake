@@ -20,10 +20,10 @@ if(NOT "${COMP_SRC_LIB_DEPS}" STREQUAL "" AND "${COMP_SRC_DEPS_PREFERRED}" STREQ
     
     if(DO_GENERATE_LIB)
         message(STATUS "No preferred library dependencies format for library ${COMP_SRC_LIB_NAME}, use ${DEFAULT_LINK}")
-    else(DO_GENERATE_APP)
+    elseif(DO_GENERATE_APP)
         message(STATUS "No preferred library dependencies format for application ${COMP_SRC_APP_NAME}, use ${DEFAULT_LINK}")
-    else(DO_GENERATE_TEST)
-        message(STATUS "No preferred library dependencies format for library ${COMP_SRC_TEST_NAME}, use ${DEFAULT_LINK}")
+    elseif(DO_GENERATE_TEST)
+        message(STATUS "No preferred library dependencies format for test ${COMP_SRC_TEST_NAME}, use ${DEFAULT_LINK}")
     endif()
     set(COMP_SRC_DEPS_PREFERRED ${DEFAULT_LINK})
 endif()
@@ -48,5 +48,3 @@ endif()
 
 ## external lib deps 
 list(APPEND UPDATED_LIB_DEPS ${COMP_SRC_LIB_DEPS_EXT})
-
-message(STATUS "Updated deps list: ${UPDATED_LIB_DEPS}")
