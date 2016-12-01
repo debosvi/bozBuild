@@ -1,7 +1,12 @@
 
-if("${COMP_SRC_DEPS_PREFFERED}" STREQUAL "static")
+if(NOT "${COMP_SRC_LIB_DEPS}" STREQUAL "" AND "${COMP_SRC_DEPS_PREFERRED}" STREQUAL "")
+    message(STATUS "No preferred library dependencies format for library ${COMP_SRC_LIB_NAME}, use static")
+    set(COMP_SRC_DEPS_PREFERRED "static")
+endif()
+
+if("${COMP_SRC_DEPS_PREFERRED}" STREQUAL "static")
     list(APPEND COMP_SRC_LIB_DEPS_STATIC ${COMP_SRC_LIB_DEPS})
-elseif("${COMP_SRC_DEPS_PREFFERED}" STREQUAL "shared")
+elseif("${COMP_SRC_DEPS_PREFERRED}" STREQUAL "shared")
     list(APPEND COMP_SRC_LIB_DEPS_SHARED ${COMP_SRC_LIB_DEPS})
 endif()    
 
