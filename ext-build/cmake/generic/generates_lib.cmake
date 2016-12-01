@@ -20,6 +20,7 @@ if(${LOCAL_TYPE_STATIC})
     if(NOT "${UPDATED_LIB_DEPS}" STREQUAL "")
         target_link_libraries(lib_${COMP_SRC_LIB_NAME}_static PUBLIC ${UPDATED_LIB_DEPS})
     endif()
+    BOZ_INSTALL_ITEM(lib_${COMP_SRC_LIB_NAME}_static)
 endif()
 
 ## build shared library
@@ -29,4 +30,5 @@ if(${LOCAL_TYPE_SHARED})
     if(NOT "${UPDATED_LIB_DEPS}" STREQUAL "")
         target_link_libraries(lib_${COMP_SRC_LIB_NAME}_shared PUBLIC ${UPDATED_LIB_DEPS})
     endif()
+    BOZ_INSTALL_ITEM(lib_${COMP_SRC_LIB_NAME}_shared)
 endif()
