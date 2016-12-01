@@ -1,0 +1,16 @@
+
+include(@LOCAL_SRC_ROOTDIR@/src.cmake)
+
+COMP_SRC_CHECK_VARS()
+
+if(${DO_GENERATE_LIB})
+    include(${BOZ_EXT_BUILD_DIR}/generic/generates_lib.cmake)
+endif()
+
+if(${DO_GENERATE_APP})
+    include(${BOZ_EXT_BUILD_DIR}/generic/generates_app.cmake)
+endif()
+
+if(${DO_GENERATE_TEST})
+    include(${BOZ_EXT_BUILD_DIR}/generic/generates_test.cmake)
+endif()
