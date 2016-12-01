@@ -23,6 +23,8 @@ macro (BOZ_COMP_FIND_APIS dir)
                     ${api}
                     ${CMAKE_BINARY_DIR}/include/public/${COMP_HEADER_PREFIX}/${cp_file}
                     @ONLY)
+                    
+                BOZ_INSTALL_HEADER(${COMP_HEADER_PREFIX}/${cp_file})
             endforeach()
         else()
             message(SEND_ERROR "Not any public API found in ${dir}")
