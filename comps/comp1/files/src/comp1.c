@@ -1,5 +1,5 @@
 
-#include "priv/comp1.h"
+#include "private/comp1_p.h"
 
 int comp1_int_g=0;
 
