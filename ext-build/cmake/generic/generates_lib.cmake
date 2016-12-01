@@ -11,8 +11,6 @@ elseif("${COMP_SRC_LIB_TYPE}" STREQUAL "shared")
     set(LOCAL_TYPE_SHARED ON)
 endif()
 
-string(REGEX REPLACE "([^;]+)" "@LOCAL_SRC_ROOTDIR@/\\1" UPDATED_SRC_FILES "${LOCAL_SRC_FILES}")
-
 include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
     
 ## build static library
@@ -22,6 +20,7 @@ if(${LOCAL_TYPE_STATIC})
     if(NOT "${UPDATED_LIB_DEPS}" STREQUAL "")
         target_link_libraries(lib_${COMP_SRC_LIB_NAME}_static PUBLIC ${UPDATED_LIB_DEPS})
     endif()
+    BOZ_INSTALL_ITEM(lib_${COMP_SRC_LIB_NAME}_static)
 endif()
 
 ## build shared library
@@ -31,4 +30,5 @@ if(${LOCAL_TYPE_SHARED})
     if(NOT "${UPDATED_LIB_DEPS}" STREQUAL "")
         target_link_libraries(lib_${COMP_SRC_LIB_NAME}_shared PUBLIC ${UPDATED_LIB_DEPS})
     endif()
+    BOZ_INSTALL_ITEM(lib_${COMP_SRC_LIB_NAME}_shared)
 endif()
