@@ -11,6 +11,10 @@ elseif("${COMP_SRC_LIB_TYPE}" STREQUAL "shared")
     set(LOCAL_TYPE_SHARED ON)
 endif()
 
+## build static lib
+set(LOCAL_BUILD_STATIC ON)
+set(LOCAL_BUILD_SHARED OFF)
+set(COMP_SRC_DEPS_PREFERRED)
 include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
     
 ## build static library
@@ -22,6 +26,12 @@ if(${LOCAL_TYPE_STATIC})
     endif()
     BOZ_INSTALL_ITEM(lib_${COMP_SRC_LIB_NAME}_static)
 endif()
+
+## build shared lib
+set(LOCAL_BUILD_STATIC OFF)
+set(LOCAL_BUILD_SHARED ON)
+set(COMP_SRC_DEPS_PREFERRED)
+include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
 
 ## build shared library
 if(${LOCAL_TYPE_SHARED})
