@@ -1,4 +1,6 @@
 
+include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comp-gen.cmake)
+
 macro(COMP_CHECK_VARS)
     if("${COMP_NAME}" STREQUAL "")
             message(SEND_ERROR "Unable to retreive component name (variable COMP_NAME)")
@@ -51,6 +53,7 @@ endmacro()
 macro (BOZ_COMPS_FIND_ALL main_dir)
     message(STATUS "Find components from root directory: ${main_dir}")
     file(GLOB_RECURSE ALL_COMPS ${main_dir} "comp.cmake")
+    message(STATUS "Components found from root directory: ${ALL_COMPS}")
     if(NOT "${ALL_COMPS}" STREQUAL "")
         foreach(comp ${ALL_COMPS})
             get_filename_component(comp_dir ${comp} DIRECTORY)
@@ -58,6 +61,7 @@ macro (BOZ_COMPS_FIND_ALL main_dir)
 
             ## prepare configure_file
             set(LOCAL_COMP_ROOTDIR ${comp_dir})
+            set(LOCAL_COMP_SRCDIR ${CMAKE_BINARY_DIR}/comps/src/${comp_dir2})
             set(LOCAL_COMP_GENDIR ${CMAKE_BINARY_DIR}/comps/build/${comp_dir2})
 
             configure_file(
