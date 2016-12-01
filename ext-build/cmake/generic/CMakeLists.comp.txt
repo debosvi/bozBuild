@@ -15,7 +15,7 @@ if(EXISTS @LOCAL_COMP_ROOTDIR@/src/src.cmake)
     set(LOCAL_SRC_ROOTDIR @LOCAL_COMP_ROOTDIR@/src)
 
     configure_file(
-        ${BOZ_EXT_BUILD_DIR}/generic/CMakeLists.src.txt
+        ${BOZ_EXT_BUILD_DIR}/generic/CMakeLists.gen.txt
         @LOCAL_COMP_SRCDIR@/src/CMakeLists.txt
         @ONLY)  
     add_subdirectory(@LOCAL_COMP_SRCDIR@/src @LOCAL_COMP_GENDIR@/src)       
@@ -27,7 +27,7 @@ if(EXISTS @LOCAL_COMP_ROOTDIR@/test/src.cmake)
     set(LOCAL_SRC_ROOTDIR @LOCAL_COMP_ROOTDIR@/test)
 
     configure_file(
-        ${BOZ_EXT_BUILD_DIR}/generic/CMakeLists.src.txt
+        ${BOZ_EXT_BUILD_DIR}/generic/CMakeLists.gen.txt
         @LOCAL_COMP_SRCDIR@/test/CMakeLists.txt
         @ONLY)  
     add_subdirectory(@LOCAL_COMP_SRCDIR@/test @LOCAL_COMP_GENDIR@/test)       

@@ -13,7 +13,6 @@ endif()
 
 string(REGEX REPLACE "([^;]+)" "@LOCAL_SRC_ROOTDIR@/\\1" UPDATED_SRC_FILES "${LOCAL_SRC_FILES}")
 
-
 include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
     
 ## build static library

@@ -10,3 +10,7 @@ endif()
 if(${DO_GENERATE_APP})
     include(${BOZ_EXT_BUILD_DIR}/generic/generates_app.cmake)
 endif()
+
+if(${DO_GENERATE_TEST})
+    include(${BOZ_EXT_BUILD_DIR}/generic/generates_test.cmake)
+endif()

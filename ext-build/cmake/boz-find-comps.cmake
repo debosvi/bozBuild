@@ -1,5 +1,5 @@
 
-include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comp-src.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comp-gen.cmake)
 
 macro(COMP_CHECK_VARS)
     if("${COMP_NAME}" STREQUAL "")
