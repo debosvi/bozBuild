@@ -12,6 +12,8 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/bin)
 include_directories (${CMAKE_BINARY_DIR}/include/public/)
 include_directories (${CMAKE_BINARY_DIR}/include)
 
+list(APPEND CMAKE_MODULE_PATH ${BOZ_EXT_BUILD_DIR}/Modules)
+
 set(CMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE ON) 
 include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comps.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/boz-vars.cmake)
