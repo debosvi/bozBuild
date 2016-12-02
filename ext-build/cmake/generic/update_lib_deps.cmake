@@ -47,4 +47,6 @@ if(NOT "${LOCAL_LIB_DEPS_SHARED}" STREQUAL "")
 endif()
 
 ## external lib deps 
-list(APPEND UPDATED_LIB_DEPS ${COMP_SRC_LIB_DEPS_EXT})
+list(APPEND UPDATED_LIB_DEPS ${COMP_EXT_LIB_DEPS})
+
+message(STATUS "List of updated dependencies: ${UPDATED_LIB_DEPS}")
