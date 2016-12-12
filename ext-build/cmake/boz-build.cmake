@@ -9,8 +9,13 @@ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/lib)
 set (EXECUTABLE_OUTPUT_PATH ${DEFAULT_INSTALL_DIR}/bin)
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${DEFAULT_INSTALL_DIR}/bin)
 
-include_directories (${CMAKE_BINARY_DIR}/include/public/)
-include_directories (${CMAKE_BINARY_DIR}/include)
+set(GENERATED_INCLUDE_DIR ${CMAKE_BINARY_DIR}/.include)
+
+## useful for public headers access
+include_directories (${GENERATED_INCLUDE_DIR}/public/)
+
+## useful for private and restricted headers access
+include_directories (${GENERATED_INCLUDE_DIR})
 
 list(APPEND CMAKE_MODULE_PATH ${BOZ_EXT_BUILD_DIR}/Modules)
 
