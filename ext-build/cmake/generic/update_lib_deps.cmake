@@ -50,4 +50,10 @@ endif()
 ## external lib deps 
 list(APPEND UPDATED_LIB_DEPS ${COMP_EXT_LIB_DEPS})
 
-message(STATUS "List of updated dependencies: ${UPDATED_LIB_DEPS}")
+if(DO_GENERATE_LIB)
+    message(STATUS "List of updated dependencies for library ${COMP_SRC_LIB_NAME}: ${UPDATED_LIB_DEPS}")
+elseif(DO_GENERATE_APP)
+    message(STATUS "List of updated dependencies for application ${COMP_SRC_APP_NAME}: ${UPDATED_LIB_DEPS}")
+elseif(DO_GENERATE_TEST)
+    message(STATUS "List of updated dependencies for test ${COMP_SRC_TEST_NAME}: ${UPDATED_LIB_DEPS}")
+endif()
