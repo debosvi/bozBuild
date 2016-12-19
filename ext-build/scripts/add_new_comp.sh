@@ -25,7 +25,8 @@ while true; do
     getValidation
 
     if [[ $var1 =~ ^[Yy]{1}[Ee]{0,1}[Ss]{0,1}$ ]]; then
-        cp -av $TMPL_DIR $NEW_LOCATION/
+        mkdir -p $NEW_LOCATION
+        cp -av $TMPL_DIR/* $NEW_LOCATION/
         echo -e "Copy is made, enjoy with new component scheme."
         echo -e "Customize now your component."
         break
