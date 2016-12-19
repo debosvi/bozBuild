@@ -14,7 +14,6 @@ endif()
 ## build static lib
 set(LOCAL_BUILD_STATIC ON)
 set(LOCAL_BUILD_SHARED OFF)
-set(COMP_SRC_DEPS_PREFERRED)
 include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
     
 ## build static library
@@ -30,7 +29,6 @@ endif()
 ## build shared lib
 set(LOCAL_BUILD_STATIC OFF)
 set(LOCAL_BUILD_SHARED ON)
-set(COMP_SRC_DEPS_PREFERRED)
 include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
 
 ## build shared library

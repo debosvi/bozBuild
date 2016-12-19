@@ -1,6 +1,7 @@
 
 ## reinit variable since this script can be called several times
 set(UPDATED_LIB_DEPS)
+set(COMP_SRC_DEPS_PREFERRED)
 set(LOCAL_LIB_DEPS_STATIC ${COMP_SRC_LIB_DEPS_STATIC})
 set(LOCAL_LIB_DEPS_SHARED ${COMP_SRC_LIB_DEPS_SHARED})
 
@@ -19,7 +20,7 @@ if(NOT "${COMP_SRC_LIB_DEPS}" STREQUAL "" AND "${COMP_SRC_DEPS_PREFERRED}" STREQ
     endif()
     
     if(DO_GENERATE_LIB)
-        message(STATUS "No preferred library dependencies format for library ${COMP_SRC_LIB_NAME}, use ${DEFAULT_LINK}")
+        message(STATUS "No preferred library dependencies format for ${DEFAULT_LINK} library ${COMP_SRC_LIB_NAME}, use ${DEFAULT_LINK}")
     elseif(DO_GENERATE_APP)
         message(STATUS "No preferred library dependencies format for application ${COMP_SRC_APP_NAME}, use ${DEFAULT_LINK}")
     elseif(DO_GENERATE_TEST)

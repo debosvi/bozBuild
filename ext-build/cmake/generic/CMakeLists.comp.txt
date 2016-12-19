@@ -1,13 +1,13 @@
 
+message(STATUS "Found component in @LOCAL_COMP_ROOTDIR@")
+
 include(@LOCAL_COMP_ROOTDIR@/comp.cmake)
 
 COMP_CHECK_VARS()
     
 include_directories(@LOCAL_COMP_ROOTDIR@/files/include)
 
-message(STATUS "Found component in ${comp_dir}")
-
-BOZ_COMP_FIND_APIS(${comp_dir}/files)     
+BOZ_COMP_FIND_APIS(@LOCAL_COMP_ROOTDIR@/files)     
 
 message(STATUS "Check presence of target cmake files in @LOCAL_COMP_ROOTDIR@/targets)")
 file(GLOB TGT_LIST @LOCAL_COMP_ROOTDIR@/targets/*.cmake)
