@@ -3,11 +3,11 @@ include(${CMAKE_CURRENT_LIST_DIR}/boz-find-comp-gen.cmake)
 
 macro(COMP_CHECK_VARS)
     if("${COMP_NAME}" STREQUAL "")
-            message(SEND_ERROR "Unable to retreive component name (variable COMP_NAME)")
+        message(SEND_ERROR "Unable to retreive component name (variable COMP_NAME)")
     endif()
 
     if("${COMP_HEADER_PREFIX}" STREQUAL "")
-            message(SEND_ERROR "Unable to retreive component header prefix at install step (variable COMP_HEADER_PREFIX)")
+        message(AUTHOR_WARNING "Unable to retreive component header prefix at install step (variable COMP_HEADER_PREFIX)")
     endif()
 endmacro()
 

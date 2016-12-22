@@ -1,10 +1,9 @@
 
 set(USR_DIR /usr/share/boz)
 if(NOT "${CMAKE_INSTALL_PREFIX}" STREQUAL "")
-	set(USR_DIR ${CMAKE_INSTALL_PREFIX})
+    set(USR_DIR ${CMAKE_INSTALL_PREFIX})
 endif()
 message(STATUS "Global install path: " ${USR_DIR})
-
 
 set(BINARY_INSTALL_DIR ${USR_DIR}/bin)
 set(LIBRARY_INSTALL_DIR ${USR_DIR}/lib)
@@ -40,6 +39,19 @@ message(STATUS "Build mode: "${CMAKE_BUILD_TYPE})
 
 if(EXISTS "${LOAD_CONFIG_DIR}/Config.in")
 add_definitions(-include ${CMAKE_BINARY_DIR}/config/config.h )
+endif()
+
+message(STATUS "CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "CMAKE_HOST_WIN32: ${CMAKE_HOST_WIN32}")
+message(STATUS "MINGW: ${MINGW}")
+message(STATUS "MSYS: ${MSYS}")
+message(STATUS "CYGWIN: ${CYGWIN}")
+message(STATUS "WIN32: ${WIN32}")
+message(STATUS "UNIX: ${UNIX}")
+
+if(${MINGW})
+    add_definitions(-DWIN32)
+    set(CMAKE_EXECUTABLE_SUFFIX ".exe")
 endif()
 
 add_definitions(-std=c99)

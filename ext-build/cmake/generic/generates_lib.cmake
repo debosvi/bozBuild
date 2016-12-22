@@ -18,7 +18,11 @@ include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
     
 ## build static library
 if(${LOCAL_TYPE_STATIC})
-    add_library(lib_${COMP_SRC_LIB_NAME}_static STATIC ${UPDATED_SRC_FILES})
+    add_library(lib_${COMP_SRC_LIB_NAME}_static 
+        STATIC 
+        # EXCLUDE_FROM_ALL
+        ${UPDATED_SRC_FILES}
+        )
     set_target_properties(lib_${COMP_SRC_LIB_NAME}_static PROPERTIES OUTPUT_NAME ${COMP_SRC_LIB_NAME})
     if(NOT "${UPDATED_LIB_DEPS}" STREQUAL "")
         target_link_libraries(lib_${COMP_SRC_LIB_NAME}_static PUBLIC ${UPDATED_LIB_DEPS})
@@ -33,10 +37,23 @@ include(${BOZ_EXT_BUILD_DIR}/generic/update_lib_deps.cmake)
 
 ## build shared library
 if(${LOCAL_TYPE_SHARED})
-    add_library(lib_${COMP_SRC_LIB_NAME}_shared SHARED ${UPDATED_SRC_FILES})
+    add_library(lib_${COMP_SRC_LIB_NAME}_shared
+        # EXCLUDE_FROM_ALL
+        ${UPDATED_SRC_FILES}
+        )
+
     set_target_properties(lib_${COMP_SRC_LIB_NAME}_shared PROPERTIES OUTPUT_NAME ${COMP_SRC_LIB_NAME})
     if(NOT "${UPDATED_LIB_DEPS}" STREQUAL "")
         target_link_libraries(lib_${COMP_SRC_LIB_NAME}_shared PUBLIC ${UPDATED_LIB_DEPS})
     endif()
+    
+    if(${MINGW})
+        set_target_properties(lib_${COMP_SRC_LIB_NAME}_shared
+                      PROPERTIES SUFFIX ".dll")
+    elseif(${UNIX})
+        set_target_properties(lib_${COMP_SRC_LIB_NAME}_shared
+                      PROPERTIES SUFFIX ".so")
+    endif()
+    
     BOZ_INSTALL_ITEM(lib_${COMP_SRC_LIB_NAME}_shared)
 endif()
